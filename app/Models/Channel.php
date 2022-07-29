@@ -9,6 +9,12 @@ class Channel extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'game_id',
+        'channel_name',
+        'description',
+    ];
+
     public function users()
     {
         return $this->belongsToMany(User::class);
