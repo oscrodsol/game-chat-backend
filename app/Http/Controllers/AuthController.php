@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -53,9 +54,50 @@ class AuthController extends Controller
         ]);
     }
 
+    public function modifyUser(Request $request, $id)
+    {
+
+        try {
+            Log::info("Updating user");
+
+            $user = User::find($id);
+
+            $validator = Validator::make($request->all(), [
+                'nick' => ['required', 'string'],
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => $validator->errors()
+                ]);
+            }
+
+            $nick = $request->input('nick');
+
+
+            $user->nick = $nick;
+
+            $user->save();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'User ' . $id . ' updated successfully'
+            ], 200);
+        } catch (\Exception $exception) {
+            Log::error('Updating task ' . $exception->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Error updating users'
+            ], 500);
+        }
+    }
+
     public function me()
     {
-        return response()->json(auth()->user());;
+        // response(auth()->user()->id)
+        return response()->json(auth()->user());
     }
 
     public function logout(Request $request)
