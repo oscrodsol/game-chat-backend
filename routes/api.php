@@ -22,3 +22,4 @@ Route::group(["middleware" => "jwt.auth"] , function() {
     Route::post('/logout', [AuthController::class, 'logout']); 
     Route::put('/modify/{id}', [AuthController::class, 'modifyUser']);
 });
+
