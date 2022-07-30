@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('game_id');
             $table->string('channel_name');
             $table->string('description');
+            $table->boolean('status')->default(false);
             $table->timestamps();
 
             $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
