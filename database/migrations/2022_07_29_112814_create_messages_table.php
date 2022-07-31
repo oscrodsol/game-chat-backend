@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('channel_id');
-            $table->string('message');
+            $table->string('message', 191);
             $table->boolean('status')->default(true);
             $table->timestamps();
 

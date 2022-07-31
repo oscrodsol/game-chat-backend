@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title', 191);
             $table->unsignedBigInteger('user_id');
-            $table->string('description');
+            $table->string('description', 191);
             $table->boolean('status')->default(true);
             $table->timestamps();
 

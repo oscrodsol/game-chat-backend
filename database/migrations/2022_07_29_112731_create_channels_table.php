@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('channels', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('game_id');
-            $table->string('channel_name');
-            $table->string('description');
+            $table->string('channel_name', 191);
+            $table->string('description', 191);
             $table->boolean('status')->default(true);
             $table->timestamps();
 
