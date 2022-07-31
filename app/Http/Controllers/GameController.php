@@ -102,36 +102,35 @@ class GameController extends Controller
         }
     } 
 
-    /*  public function deleteTaskById($id)
+      public function deleteGameById($id)
     {
-        $userId = auth()->user()->id;
         try {
-            Log::info('Delete task with the id ' . $id);
+            Log::info('Delete game with the id ' . $id);
 
-            $task = Task::find($id)->where('id', $id)->where('user_id', $userId);
+            $game = Game::find($id)->where('id', $id);
 
-            if (!$task) {
+            if (!$game) {
                 return response()->json([
                     'success' => false,
-                    'message' => "The task doesn't exist"
+                    'message' => "The game doesn't exist"
                 ], 200);
             }
 
-            $task->delete();
+            $game->delete();
 
             return response()->json([
                 'success' => true,
-                'message' => 'Task ' . $id . ' deleted successfully'
+                'message' => 'Game ' . $id . ' deleted successfully'
             ], 200);
         } catch (\Exception $exception) {
-            Log::error('Updating task ' . $exception->getMessage());
+            Log::error('Updating game ' . $exception->getMessage());
 
             return response()->json([
                 'success' => false,
-                'message' => 'Error deleting tasks'
+                'message' => 'Error deleting game'
             ], 500);
         }
-    } */
+    } 
 
     /* public function modifyTaskById(Request $request, $id)
     {
