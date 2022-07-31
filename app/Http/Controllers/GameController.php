@@ -68,17 +68,17 @@ class GameController extends Controller
             return response()->json(
                 [
                     'success' => true,
-                    'message' => "Task created"
+                    'message' => "Game created"
                 ],
                 200
             );
         } catch (\Exception $exception) {
-            Log::error("Error creating task: " . $exception->getMessage());
+            Log::error("Error creating game: " . $exception->getMessage());
 
             return response()->json(
                 [
                     'success' => false,
-                    'message' => "Error creating tasks"
+                    'message' => "Error creating Game"
                 ],
                 500
             );
