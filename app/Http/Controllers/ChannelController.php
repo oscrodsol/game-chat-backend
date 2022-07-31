@@ -58,4 +58,24 @@ class ChannelController extends Controller
             );
         }
     }
+
+    public function joinChannel (Request $request, $id)
+    {
+        try {
+            $channel = Channel::query()->findOrFail($id);
+            $channel->users()->attach(auth()->user()->id);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'user joined successfully',
+                'data' => $channel
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error joining channel ' . $exception->getMessage()
+            ]);
+        }
+        return ['Get task with the id ' . $id];
+    }
 }
