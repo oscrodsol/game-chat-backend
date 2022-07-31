@@ -16,7 +16,23 @@ class GameController extends Controller
         try {
              $games = Game::query()->get(['title','description']);
 
-            //$games = User::query()->find($userId)->games; //One to many 
+            return response()->json([
+                'success' => true,
+                'message' => 'Games retrieved successfully',
+                'data' => $games
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error retrieving ' . $exception->getMessage()
+            ]);
+        }
+    }
+
+    public function getAllGamesInfo()
+    {
+        try {
+             $games = Game::query()->get();
 
             return response()->json([
                 'success' => true,
@@ -85,7 +101,7 @@ class GameController extends Controller
 
      public function getGameByTitle(Request $request, $title)
     {
-        
+
         try {
             $game = Game::query()->where('title', $title)->get();
 
@@ -102,52 +118,48 @@ class GameController extends Controller
         }
     } 
 
-    /*  public function deleteTaskById($id)
+      public function deleteGameById($id)
     {
-        $userId = auth()->user()->id;
         try {
-            Log::info('Delete task with the id ' . $id);
+            Log::info('Delete Game with the id ' . $id);
 
-            $task = Task::find($id)->where('id', $id)->where('user_id', $userId);
+            $game = Game::find($id)->where('id', $id);
 
-            if (!$task) {
+            if (!$game) {
                 return response()->json([
                     'success' => false,
-                    'message' => "The task doesn't exist"
+                    'message' => "The game doesn't exist"
                 ], 200);
             }
 
-            $task->delete();
+            $game->delete();
 
             return response()->json([
                 'success' => true,
-                'message' => 'Task ' . $id . ' deleted successfully'
+                'message' => 'Game ' . $id . ' deleted successfully'
             ], 200);
         } catch (\Exception $exception) {
             Log::error('Updating task ' . $exception->getMessage());
 
             return response()->json([
                 'success' => false,
-                'message' => 'Error deleting tasks'
+                'message' => 'Error deleting game'
             ], 500);
         }
-    } */
+    } 
 
-    /* public function modifyTaskById(Request $request, $id)
+     public function updateGameById(Request $request, $id)
     {
 
-        $userId = auth()->user()->id;
         try {
-            Log::info("Updating task");
+            Log::info("Updating game");
 
-            // $task = Task::find($id)->where('id','=',$id)->where('user_id','=',$userId);
-
-            $task = Task::query()->where('id', '=', $id)->where('user_id', '=', $userId)->first();
-
-            // dd($task);
+            $game = Game::query()->where('id', $id)->first();
 
             $validator = Validator::make($request->all(), [
-                'title' => ['required', 'string'],
+                'title' => 'required|string',
+                'description' => 'required|string',
+                'status' => 'required|integer'
             ]);
 
             if ($validator->fails()) {
@@ -158,47 +170,26 @@ class GameController extends Controller
             }
 
             $title = $request->input('title');
+            $description = $request->input('description');
             $status = $request->input('status');
 
-            $task->title = $title;
-            $task->status = $status;
-            // $task->user_id = $userId;
+            $game->title = $title;
+            $game->description = $description;
+            $game->status = $status;
 
-            $task->save();
+            $game->save();
 
             return response()->json([
                 'success' => true,
-                'message' => 'Task ' . $id . ' updated successfully'
+                'message' => 'Game ' . $id . ' updated successfully'
             ], 200);
         } catch (\Exception $exception) {
-            Log::error('Updating task ' . $exception->getMessage());
+            Log::error('Updating game ' . $exception->getMessage());
 
             return response()->json([
                 'success' => false,
-                'message' => 'Error updating tasks'
+                'message' => 'Error updating games'
             ], 500);
         }
-    } */
-
-    /* public function getUserByIdTask($id)
-    {
-        try {
-            $task = Task::query()->find($id);
-
-            $user = $task->user;
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Tasks retrieved successfully',
-                'data' => $user
-            ]);
-        } catch (\Exception $exception) {
-            Log::error('Updating task ' . $exception->getMessage());
-
-            return response()->json([
-                'success' => false,
-                'message' => 'Error updating tasks'
-            ], 500);
-        }
-    } */
+    } 
 }

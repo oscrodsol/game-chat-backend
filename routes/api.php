@@ -20,13 +20,13 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/games', [GameController::class, 'getAllGames']);
-Route::get('/gameByTitle/{title}', [GameController::class, 'getGameByTitle']);
+Route::get('/game_by_title/{title}', [GameController::class, 'getGameByTitle']);
 
 
 Route::group(["middleware" => "jwt.auth"] , function() {
     Route::get('/profile', [AuthController::class, 'me']);
     Route::post('/logout', [AuthController::class, 'logout']); 
-    Route::put('/modify/{id}', [AuthController::class, 'modifyUser']);
+    Route::put('/modify', [AuthController::class, 'modifyUser']);
     Route::post('/create_channel', [ChannelController::class, 'createChannel']);
     Route::post('/join_channel/{id}', [ChannelController::class, 'joinChannel']);
     Route::post('/leave_channel/{id}', [ChannelController::class, 'leaveChannel']);
@@ -38,4 +38,7 @@ Route::group(["middleware" => ["jwt.auth", "isSuperAdmin"]] , function() {
     Route::post('/user/add_admin/{id}', [AdminController::class, 'addAdminRoleToUser']);
     Route::post('/user/remove_admin/{id}', [AdminController::class, 'removeAdminRoleToUser']);
     Route::post('/create_game', [GameController::class, 'createGame']);
+    Route::get('/games_info', [GameController::class, 'getAllGamesInfo']);
+    Route::delete('/delete_game/{id}', [GameController::class, 'deleteGameById']);
+    Route::put('/update_game/{id}', [GameController::class, 'updateGameById']);
 });
