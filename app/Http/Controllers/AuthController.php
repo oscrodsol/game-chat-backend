@@ -118,4 +118,34 @@ class AuthController extends Controller
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
+    public function deleteUserById($id)
+    {
+        try {
+            Log::info('Delete user with the id ' . $id);
+
+            $user = User::find($id)->where('id', $id);
+
+            if (!$user) {
+                return response()->json([
+                    'success' => false,
+                    'message' => "The user doesn't exist"
+                ], 200);
+            }
+
+            $user->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'user ' . $id . ' deleted successfully'
+            ], 200);
+        } catch (\Exception $exception) {
+            Log::error('Updating user ' . $exception->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Error deleting user'
+            ], 500);
+        }
+    } 
 }
