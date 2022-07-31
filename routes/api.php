@@ -25,6 +25,8 @@ Route::group(["middleware" => "jwt.auth"] , function() {
     Route::post('/logout', [AuthController::class, 'logout']); 
     Route::put('/modify/{id}', [AuthController::class, 'modifyUser']);
     Route::post('/create_channel', [ChannelController::class, 'createChannel']);
+    Route::post('/join_channel/{id}', [ChannelController::class, 'joinChannel']);
+    Route::post('/leave_channel/{id}', [ChannelController::class, 'leaveChannel']);
 });
 
 Route::group(["middleware" => ["jwt.auth", "isSuperAdmin"]] , function() {
@@ -33,5 +35,4 @@ Route::group(["middleware" => ["jwt.auth", "isSuperAdmin"]] , function() {
     Route::post('/user/add_admin/{id}', [AdminController::class, 'addAdminRoleToUser']);
     Route::post('/user/remove_admin/{id}', [AdminController::class, 'removeAdminRoleToUser']);
     Route::post('/create_game', [GameController::class, 'createGame']);
-
 });

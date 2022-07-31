@@ -76,6 +76,24 @@ class ChannelController extends Controller
                 'message' => 'Error joining channel ' . $exception->getMessage()
             ]);
         }
-        return ['Get task with the id ' . $id];
+    }
+
+    public function leaveChannel (Request $request, $id)
+    {
+        try {
+            $channel = Channel::query()->findOrFail($id);
+            $channel->users()->detach(auth()->user()->id);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'user leaved the channel successfully',
+                'data' => $channel
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error leaving channel ' . $exception->getMessage()
+            ]);
+        }
     }
 }
