@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
@@ -23,6 +24,7 @@ Route::group(["middleware" => "jwt.auth"] , function() {
     Route::get('/profile', [AuthController::class, 'me']);
     Route::post('/logout', [AuthController::class, 'logout']); 
     Route::put('/modify/{id}', [AuthController::class, 'modifyUser']);
+    Route::post('/create_channel', [ChannelController::class, 'createChannel']);
 });
 
 Route::group(["middleware" => ["jwt.auth", "isSuperAdmin"]] , function() {

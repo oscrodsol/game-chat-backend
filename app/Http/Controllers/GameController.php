@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class GameController extends Controller
 {
     
-    public function getAllGames()
+/*     public function getAllGames()
     {
         $userId = auth()->user()->id;
         try {
@@ -31,7 +31,7 @@ class GameController extends Controller
             ]);
         }
         return ['Get game with the id ' . $userId];
-    }
+    } */
 
     public function createGame(Request $request)
     {
@@ -84,8 +84,8 @@ class GameController extends Controller
             );
         }
     }
-/* 
-    public function getTaskById($id)
+
+    /* public function getTaskById($id)
     {
 
         $userId = auth()->user()->id;
@@ -104,9 +104,9 @@ class GameController extends Controller
             ]);
         }
         return ['Get task with the id ' . $id];
-    }
+    } */
 
-    public function deleteTaskById($id)
+   /*  public function deleteTaskById($id)
     {
         $userId = auth()->user()->id;
         try {
@@ -135,9 +135,9 @@ class GameController extends Controller
                 'message' => 'Error deleting tasks'
             ], 500);
         }
-    }
+    } */
 
-    public function modifyTaskById(Request $request, $id)
+    /* public function modifyTaskById(Request $request, $id)
     {
 
         $userId = auth()->user()->id;
@@ -182,9 +182,9 @@ class GameController extends Controller
                 'message' => 'Error updating tasks'
             ], 500);
         }
-    }
+    } */
 
-    public function getUserByIdTask($id)
+    /* public function getUserByIdTask($id)
     {
         try {
             $task = Task::query()->find($id);
