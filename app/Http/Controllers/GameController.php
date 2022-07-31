@@ -16,7 +16,23 @@ class GameController extends Controller
         try {
              $games = Game::query()->get(['title','description']);
 
-            //$games = User::query()->find($userId)->games; //One to many 
+            return response()->json([
+                'success' => true,
+                'message' => 'Games retrieved successfully',
+                'data' => $games
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error retrieving ' . $exception->getMessage()
+            ]);
+        }
+    }
+
+    public function getAllGamesInfo()
+    {
+        try {
+             $games = Game::query()->get();
 
             return response()->json([
                 'success' => true,
@@ -85,7 +101,7 @@ class GameController extends Controller
 
      public function getGameByTitle(Request $request, $title)
     {
-        
+
         try {
             $game = Game::query()->where('title', $title)->get();
 
@@ -164,7 +180,7 @@ class GameController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Task ' . $id . ' updated successfully'
+                'message' => 'Game ' . $id . ' updated successfully'
             ], 200);
         } catch (\Exception $exception) {
             Log::error('Updating game ' . $exception->getMessage());

@@ -54,16 +54,17 @@ class AuthController extends Controller
         ]);
     }
 
-    public function modifyUser(Request $request, $id)
+    public function modifyUser(Request $request)
     {
+        $userId = auth()->user()->id;
 
         try {
             Log::info("Updating user");
 
-            $user = User::find($id);
+            $user = User::find($userId);
 
             $validator = Validator::make($request->all(), [
-                'nick' => ['required', 'string'],
+                'nick' => 'required|string',
             ]);
 
             if ($validator->fails()) {
@@ -82,7 +83,7 @@ class AuthController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'User ' . $id . ' updated successfully'
+                'message' => 'User ' . $userId . ' updated successfully'
             ], 200);
         } catch (\Exception $exception) {
             Log::error('Updating task ' . $exception->getMessage());
@@ -96,7 +97,6 @@ class AuthController extends Controller
 
     public function me()
     {
-        // response(auth()->user()->id)
         return response()->json(auth()->user());
     }
 
