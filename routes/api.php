@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\AuthController;
@@ -30,6 +31,7 @@ Route::group(["middleware" => "jwt.auth"] , function() {
     Route::post('/create_channel', [ChannelController::class, 'createChannel']);
     Route::post('/join_channel/{id}', [ChannelController::class, 'joinChannel']);
     Route::post('/leave_channel/{id}', [ChannelController::class, 'leaveChannel']);
+    Route::post('/message_by_channel_id/{id}', [MessageController::class, 'postMessage']);
 });
 
 Route::group(["middleware" => ["jwt.auth", "isSuperAdmin"]] , function() {
