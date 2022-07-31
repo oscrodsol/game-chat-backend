@@ -11,18 +11,18 @@ use Illuminate\Support\Facades\Validator;
 class GameController extends Controller
 {
     
-    public function getAllTasks()
+    public function getAllGames()
     {
         $userId = auth()->user()->id;
         try {
             // $tasks = Task::query()->where('user_id','=',$userId)->get()->toArray();
 
-            $tasks = User::query()->find($userId)->games; //One to many 
+            $games = User::query()->find($userId)->games; //One to many 
 
             return response()->json([
                 'success' => true,
-                'message' => 'Tasks retrieved successfully',
-                'data' => $tasks
+                'message' => 'Games retrieved successfully',
+                'data' => $games
             ]);
         } catch (\Exception $exception) {
             return response()->json([
@@ -30,16 +30,17 @@ class GameController extends Controller
                 'message' => 'Error retrieving ' . $exception->getMessage()
             ]);
         }
-        return ['Get task with the id ' . $userId];
+        return ['Get game with the id ' . $userId];
     }
 
-    public function createTask(Request $request)
+    public function createGame(Request $request)
     {
         try {
-            Log::info("Creating a task");
+            Log::info("Creating a game");
 
             $validator = Validator::make($request->all(), [
                 'title' => 'required|string',
+                'description' => 'required|string',
             ]);
 
             if ($validator->fails()) {
@@ -53,13 +54,15 @@ class GameController extends Controller
             };
 
             $title = $request->input('title');
+            $description = $request->input('description');
             $userId = auth()->user()->id;
 
-            $task = new Game();
-            $task->title = $title;
-            $task->user_id = $userId;
+            $game = new Game();
+            $game->title = $title;
+            $game->user_id = $userId;
+            $game->description = $description;
 
-            $task->save();
+            $game->save();
 
 
             return response()->json(
