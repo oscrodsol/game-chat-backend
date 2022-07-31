@@ -14,7 +14,7 @@ class GameController extends Controller
     public function getAllGames()
     {
         try {
-             $games = Game::query()->get();
+             $games = Game::query()->get(['title','description']);
 
             //$games = User::query()->find($userId)->games; //One to many 
 
@@ -83,17 +83,16 @@ class GameController extends Controller
         }
     }
 
-    /* public function getTaskById($id)
+     public function getGameByTitle(Request $request, $title)
     {
-
-        $userId = auth()->user()->id;
+        
         try {
-            $tasks = Task::query()->findOrFail($userId)->where('user_id', $userId)->where('id', $id)->get()->toArray();
+            $game = Game::query()->where('title', $title)->get();
 
             return response()->json([
                 'success' => true,
                 'message' => 'Tasks retrieved successfully',
-                'data' => $tasks
+                'data' => $game
             ]);
         } catch (\Exception $exception) {
             return response()->json([
@@ -101,8 +100,7 @@ class GameController extends Controller
                 'message' => 'Error retrieving ' . $exception->getMessage()
             ]);
         }
-        return ['Get task with the id ' . $id];
-    } */
+    } 
 
     /*  public function deleteTaskById($id)
     {

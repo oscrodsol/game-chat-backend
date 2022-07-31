@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/games', [GameController::class, 'getAllGames']);
+Route::get('/gameByTitle/{title}', [GameController::class, 'getGameByTitle']);
 
 
 Route::group(["middleware" => "jwt.auth"] , function() {
