@@ -10,14 +10,13 @@ use Illuminate\Support\Facades\Validator;
 
 class GameController extends Controller
 {
-    
-/*     public function getAllGames()
-    {
-        $userId = auth()->user()->id;
-        try {
-            // $tasks = Task::query()->where('user_id','=',$userId)->get()->toArray();
 
-            $games = User::query()->find($userId)->games; //One to many 
+    public function getAllGames()
+    {
+        try {
+             $games = Game::query()->get();
+
+            //$games = User::query()->find($userId)->games; //One to many 
 
             return response()->json([
                 'success' => true,
@@ -30,8 +29,7 @@ class GameController extends Controller
                 'message' => 'Error retrieving ' . $exception->getMessage()
             ]);
         }
-        return ['Get game with the id ' . $userId];
-    } */
+    }
 
     public function createGame(Request $request)
     {
@@ -106,7 +104,7 @@ class GameController extends Controller
         return ['Get task with the id ' . $id];
     } */
 
-   /*  public function deleteTaskById($id)
+    /*  public function deleteTaskById($id)
     {
         $userId = auth()->user()->id;
         try {
