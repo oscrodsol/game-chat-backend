@@ -19,7 +19,35 @@ Proyecto realizado para el Bootcamp Full Stack Developer de GeeksHubs, donde se 
 
 Puedes acceder a la pagina web desde este link: https://immense-castle-69938.herokuapp.com/api/
 
-# Rutas del backend:
+## Rutas de backend:
+
+`/` Bienvenida de la página.
+
+
+`/register`
+`/login`
+`/games`
+`/game_by_title/{title}`
+
+####Rutas con auth:
+`/profile`
+`/logout` 
+`/modify`
+`/create_channel`
+`/join_channel/{id}`
+`/leave_channel/{id}`
+`/message_by_channel_id/{id}`
+
+####Rutas con auth y super admin:
+
+`/user/add_super_admin/{id}`
+`/user/remove_super_admin/{id}`
+`/user/add_admin/{id}`
+`/user/remove_admin/{id}`
+`/create_game`
+`/delete_game/{id}`
+`/update_game/{id}`
+`/delete_user_by_id/{id}`
 
 # Base de datos:
 
