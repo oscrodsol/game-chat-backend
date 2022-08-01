@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Log;
 class AdminController extends Controller
 {
     
-    const ROLE_SUPER_ADMIN = 3;
-    const ROLE_ADMIN = 2;
+    const ROLE_SUPER_ADMIN = 21;
+    const ROLE_ADMIN = 11;
 
     public function addSuperAdminRoleToUser($id) {
         try {
