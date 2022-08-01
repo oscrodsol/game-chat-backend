@@ -30,6 +30,7 @@ Ver el titulo y description de todos los juegos: `/games`<br/>
 Busca un juego por su titulo: `/game_by_title/{title}`<br/><br/>
 
 <h4>Rutas con auth:</h4>
+
 Ver tus propios datos de perfil: `/profile`<br/>
 Desloguearte de la página: `/logout` <br/>
 Modifica tu nick de usuario: `/modify`<br/>
@@ -37,6 +38,7 @@ Crea un canal con el id del juego: `/create_channel`<br/>
 Unete a un canal conociendo su id: `/join_channel/{id}`<br/>
 Deja a un canal al que perteneces conociendo su id: `/leave_channel/{id}`<br/>
 Manda un mensaje al canal al que perteneces conociendo su id`/message_by_channel_id/{id}`<br/><br/>
+
 <h4>Rutas con auth y super admin:</h4>
 
 Añade el rol super admin a un usuario conociendo su id: `/user/add_super_admin/{id}`<br/>
