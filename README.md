@@ -52,8 +52,17 @@ Borra a un usuario conociendo su id: `/delete_user_by_id/{id}`<br/>
 
 # Base de datos:
 
+Ingenieria inversa de las relaciones entre las tablas:
+
+![Diagrama entidad relacion game_chat](https://user-images.githubusercontent.com/66917963/182230679-9b4b1958-4c5e-4d7a-8da5-2d1fcf535896.png)
+
 # Tareas pendientes:
-  - [ ] 
-  - [ ] 
-  - [ ] 
-  - [ ] 
+  - [ ] Completar el crud en la parte de usuario.
+  - [ ] Completar el crud en la parte de mensajes.
+  - [ ] Completar el crud en la parte de canales.
+  - [ ] Crear seeder de usuario, canal y juegos.
+  - [ ] Añadir ruta donde se filtran los mensajes, canales y juegos a los que pertenece un usuario.
+  - [ ] Añadir middleware de admin.
+  - [ ] Añadir rutas donde se emplee el middleware admin.
+  - [ ] Mejorar la sintaxis y comprension de codigo.
+      
