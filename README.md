@@ -21,33 +21,33 @@ Puedes acceder a la pagina web desde este link: https://immense-castle-69938.her
 
 ## Rutas de backend:
 
-Página de bienvenida: `/` 
+Página de bienvenida: `/` <br/><br/>
 
 
-Registro de usuario: `/register`
-Login de usuario: `/login`
-Ver el titulo y description de todos los juegos: `/games`
-Busca un juego por su titulo: `/game_by_title/{title}`
+Registro de usuario: `/register`<br/>
+Login de usuario: `/login`<br/>
+Ver el titulo y description de todos los juegos: `/games`<br/>
+Busca un juego por su titulo: `/game_by_title/{title}`<br/><br/>
 
 ####Rutas con auth:
-Ver tus propios datos de perfil: `/profile`
-Desloguearte de la página: `/logout` 
-Modifica tu nick de usuario: `/modify`
-Crea un canal con el id del juego: `/create_channel`
-Unete a un canal conociendo su id: `/join_channel/{id}`
-Deja a un canal al que perteneces conociendo su id: `/leave_channel/{id}`
-Manda un mensaje al canal al que perteneces conociendo su id`/message_by_channel_id/{id}`
+Ver tus propios datos de perfil: `/profile`<br/>
+Desloguearte de la página: `/logout` <br/>
+Modifica tu nick de usuario: `/modify`<br/>
+Crea un canal con el id del juego: `/create_channel`<br/>
+Unete a un canal conociendo su id: `/join_channel/{id}`<br/>
+Deja a un canal al que perteneces conociendo su id: `/leave_channel/{id}`<br/>
+Manda un mensaje al canal al que perteneces conociendo su id`/message_by_channel_id/{id}`<br/><br/>
 
 ####Rutas con auth y super admin:
 
-Añade el rol super admin a un usuario conociendo su id: `/user/add_super_admin/{id}`
-Retira el rol super admin a un usuario conociendo su id: `/user/remove_super_admin/{id}`
-Añade el rol admin a un usuario conociendo su id: `/user/add_admin/{id}`
-Retira el rol admin a un usuario conociendo su id: `/user/remove_admin/{id}`
-Crea una categoria de juego: `/create_game`
-Borra una categoria de juego: `/delete_game/{id}`
-Modifica una categoria de juego: `/update_game/{id}`
-Borra a un usuario conociendo su id: `/delete_user_by_id/{id}`
+Añade el rol super admin a un usuario conociendo su id: `/user/add_super_admin/{id}`<br/>
+Retira el rol super admin a un usuario conociendo su id: `/user/remove_super_admin/{id}`<br/>
+Añade el rol admin a un usuario conociendo su id: `/user/add_admin/{id}`<br/>
+Retira el rol admin a un usuario conociendo su id: `/user/remove_admin/{id}`<br/>
+Crea una categoria de juego: `/create_game`<br/>
+Borra una categoria de juego: `/delete_game/{id}`<br/>
+Modifica una categoria de juego: `/update_game/{id}`<br/>
+Borra a un usuario conociendo su id: `/delete_user_by_id/{id}`<br/>
 
 # Base de datos:
 
