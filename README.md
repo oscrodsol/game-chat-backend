@@ -21,34 +21,34 @@ Puedes acceder a la pagina web desde este link: https://immense-castle-69938.her
 
 ## Rutas de backend:
 
-Página de bienvenida: `/` <br/><br/>
+Página de bienvenida: `api/` <br/><br/>
 
 
-Registro de usuario: `/register`<br/>
-Login de usuario: `/login`<br/>
-Ver el titulo y description de todos los juegos: `/games`<br/>
-Busca un juego por su titulo: `/game_by_title/{title}`<br/><br/>
+Registro de usuario: `api/register`<br/>
+Login de usuario: `api/login`<br/>
+Ver el titulo y description de todos los juegos: `api/games`<br/>
+Busca un juego por su titulo: `api/game_by_title/{title}`<br/><br/>
 
 <h4>Rutas con auth:</h4>
 
-Ver tus propios datos de perfil: `/profile`<br/>
-Desloguearte de la página: `/logout` <br/>
-Modifica tu nick de usuario: `/modify`<br/>
-Crea un canal con el id del juego: `/create_channel`<br/>
-Unete a un canal conociendo su id: `/join_channel/{id}`<br/>
-Deja a un canal al que perteneces conociendo su id: `/leave_channel/{id}`<br/>
-Manda un mensaje al canal al que perteneces conociendo su id`/message_by_channel_id/{id}`<br/><br/>
+Ver tus propios datos de perfil: `api/profile`<br/>
+Desloguearte de la página: `api/logout` <br/>
+Modifica tu nick de usuario: `api/modify`<br/>
+Crea un canal con el id del juego: `api/create_channel`<br/>
+Unete a un canal conociendo su id: `api/join_channel/{id}`<br/>
+Deja a un canal al que perteneces conociendo su id: `api/leave_channel/{id}`<br/>
+Manda un mensaje al canal al que perteneces conociendo su id: `api/message_by_channel_id/{id}`<br/><br/>
 
 <h4>Rutas con auth y super admin:</h4>
 
-Añade el rol super admin a un usuario conociendo su id: `/user/add_super_admin/{id}`<br/>
-Retira el rol super admin a un usuario conociendo su id: `/user/remove_super_admin/{id}`<br/>
-Añade el rol admin a un usuario conociendo su id: `/user/add_admin/{id}`<br/>
-Retira el rol admin a un usuario conociendo su id: `/user/remove_admin/{id}`<br/>
-Crea una categoria de juego: `/create_game`<br/>
-Borra una categoria de juego: `/delete_game/{id}`<br/>
-Modifica una categoria de juego: `/update_game/{id}`<br/>
-Borra a un usuario conociendo su id: `/delete_user_by_id/{id}`<br/>
+Añade el rol super admin a un usuario conociendo su id: `api/user/add_super_admin/{id}`<br/>
+Retira el rol super admin a un usuario conociendo su id: `api/user/remove_super_admin/{id}`<br/>
+Añade el rol admin a un usuario conociendo su id: `api/user/add_admin/{id}`<br/>
+Retira el rol admin a un usuario conociendo su id: `api/user/remove_admin/{id}`<br/>
+Crea una categoria de juego: `api/create_game`<br/>
+Borra una categoria de juego: `api/delete_game/{id}`<br/>
+Modifica una categoria de juego: `api/update_game/{id}`<br/>
+Borra a un usuario conociendo su id: `api/delete_user_by_id/{id}`<br/>
 
 # Base de datos:
 
