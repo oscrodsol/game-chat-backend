@@ -35,11 +35,10 @@ class MessageController extends Controller
             $channel = Channel::query()->findOrFail($id);
             $channel->users()->findOrFail($userId);
 
-            $channel = Message::create([
+            Message::create([
                 'user_id' => $userId,
                 'channel_id' => $id,
                 'message' => $request->get('message'),
-
             ]);
 
             return response()->json(
@@ -61,4 +60,45 @@ class MessageController extends Controller
             );
         }
     }
+
+    public function modifyMessageById(Request $request, $id)
+    {
+
+        $userId = auth()->user()->id;
+
+        try {
+            Log::info("Updating message");
+
+            $messageUpdate = Message::query()->where('id', $id)->where('user_id', $userId)->first();
+
+            $validator = Validator::make($request->all(), [
+                'message' => 'required|string',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => $validator->errors()
+                ]);
+            }
+
+            $message = $request->input('message');
+
+            $messageUpdate->message = $message;
+
+            $messageUpdate->save();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Message ' . $id . ' updated successfully'
+            ], 200);
+        } catch (\Exception $exception) {
+            Log::error('Updating message ' . $exception->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Error updating message'
+            ], 500);
+        }
+    } 
 }

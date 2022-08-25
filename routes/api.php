@@ -37,6 +37,7 @@ Route::group(["middleware" => "jwt.auth"] , function() {
     Route::post('/join_channel/{id}', [ChannelController::class, 'joinChannel']);
     Route::post('/leave_channel/{id}', [ChannelController::class, 'leaveChannel']);
     Route::post('/message_by_channel_id/{id}', [MessageController::class, 'postMessage']);
+    Route::put('/update_message_by_id/{id}', [MessageController::class, 'modifyMessageById']);
 });
 
 Route::group(["middleware" => ["jwt.auth", "isSuperAdmin"]] , function() {
