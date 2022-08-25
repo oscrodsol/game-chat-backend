@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class MessageController extends Controller
 {
-    public function postMessage(Request $request, $id)
+    public function postMessageByChannelId(Request $request, $id)
     {
 
         $userId = auth()->user()->id;
@@ -101,4 +101,27 @@ class MessageController extends Controller
             ], 500);
         }
     } 
+
+    public function getAllMessagesByChannelId($id)
+    {
+
+        $userId = auth()->user()->id;
+        
+        try {
+             $messages = Message::query()->where('channel_id', $id)->get();
+             $channel = Channel::query()->findOrFail($id);
+             $channel->users()->findOrFail($userId);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Messages retrieved successfully',
+                'data' => $messages
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error retrieving ' . $exception->getMessage()
+            ]);
+        }
+    }
 }
