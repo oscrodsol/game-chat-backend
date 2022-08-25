@@ -107,7 +107,7 @@ class GameController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Tasks retrieved successfully',
+                'message' => 'Games retrieved successfully',
                 'data' => $game
             ]);
         } catch (\Exception $exception) {
@@ -123,7 +123,7 @@ class GameController extends Controller
         try {
             Log::info('Delete game with the id ' . $id);
 
-            $game = Game::find($id)->where('id', $id);
+            $game = Game::find($id);
 
             if (!$game) {
                 return response()->json([

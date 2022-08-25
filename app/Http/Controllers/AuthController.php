@@ -86,7 +86,7 @@ class AuthController extends Controller
                 'message' => 'User ' . $userId . ' updated successfully'
             ], 200);
         } catch (\Exception $exception) {
-            Log::error('Updating task ' . $exception->getMessage());
+            Log::error('Updating user ' . $exception->getMessage());
 
             return response()->json([
                 'success' => false,
@@ -121,10 +121,11 @@ class AuthController extends Controller
 
     public function deleteUserById($id)
     {
+        $userId = auth()->user()->id;
         try {
             Log::info('Delete user with the id ' . $id);
 
-            $user = User::find($id)->where('id', $id);
+            $user = User::find($id)->where('user_id', $userId);
 
             if (!$user) {
                 return response()->json([
@@ -144,8 +145,8 @@ class AuthController extends Controller
 
             return response()->json([
                 'success' => false,
-                'message' => 'Error deleting user'
+                'message' => 'Error deleting users'
             ], 500);
         }
-    } 
+    }
 }
