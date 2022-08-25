@@ -37,10 +37,10 @@ Modifica tu nick de usuario: `api/modify`<br/>
 Crea un canal con el id del juego: `api/create_channel`<br/>
 Unete a un canal conociendo su id: `api/join_channel/{id}`<br/>
 Deja a un canal al que perteneces conociendo su id: `api/leave_channel/{id}`<br/>
-Manda un mensaje al canal al que perteneces conociendo su id: `api/message_by_channel_id/{id}`<br/><br/>
-Modifica un mensaje tuyo conociendo su id: `api/update_message_by_id/{id}`<br/><br/>
-Obten todos los mensajes de un canal al que perteneces conociendo su id: `api/get_all_messages_by_channel_id/{id}`<br/><br/>
-Borra un mensaje tuyo conociendo su id: `api/delete_message_by_id/{id}`<br/><br/>
+Manda un mensaje al canal al que perteneces conociendo su id: `api/message_by_channel_id/{id}`<br/>
+Modifica un mensaje tuyo conociendo su id: `api/update_message_by_id/{id}`<br/>
+Obten todos los mensajes de un canal al que perteneces conociendo su id: `api/get_all_messages_by_channel_id/{id}`<br/>
+Borra un mensaje tuyo conociendo su id: `api/delete_message_by_id/{id}`<br/>
 Obten un mensaje tuyo conociendo su id: `api/get_message_by_id/{id}`<br/><br/>
 
 <h4>Rutas con auth y super admin:</h4>
