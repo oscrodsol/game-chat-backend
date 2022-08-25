@@ -69,7 +69,8 @@ class MessageController extends Controller
         try {
             Log::info("Updating message");
 
-            $messageUpdate = Message::query()->where('id', $id)->where('user_id', $userId)->first();
+            $messageUpdate = Message::find($id);
+            $messageUpdate -> user()->findOrFail($userId);
 
             $validator = Validator::make($request->all(), [
                 'message' => 'required|string',
@@ -134,7 +135,8 @@ class MessageController extends Controller
 
             Log::info('Delete message with the id ' . $id);
 
-            $message = Message::query()->find($id)->where('user_id', $userId)->first();
+            $message = Message::find($id);
+            $message -> user()->findOrFail($userId);
 
             if (!$message) {
                 return response()->json([
@@ -158,4 +160,37 @@ class MessageController extends Controller
             ], 500);
         }
     } 
+
+    public function getMessageById($id)
+    {
+
+        $userId = auth()->user()->id;
+
+        try {
+
+            Log::info('Retrieve message with the id ' . $id);
+
+            $message = Message::find($id);
+            $message -> user()->findOrFail($userId);
+            if (!$message) {
+                return response()->json([
+                    'success' => false,
+                    'message' => "The message doesn't exist"
+                ], 200);
+            }
+
+            return response()->json([
+                'success' => true,
+                'message' => 'message ' . $id . ' retrieved successfully',
+                'data' => $message
+            ], 200);
+        } catch (\Exception $exception) {
+            Log::error('Updating message ' . $exception->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Error getting message'
+            ], 500);
+        }
+    }
 }

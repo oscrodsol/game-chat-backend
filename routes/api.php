@@ -40,6 +40,7 @@ Route::group(["middleware" => "jwt.auth"] , function() {
     Route::put('/update_message_by_id/{id}', [MessageController::class, 'modifyMessageById']);
     Route::get('/get_all_messages_by_channel_id/{id}', [MessageController::class, 'getAllMessagesByChannelId']);
     Route::delete('/delete_message_by_id/{id}', [MessageController::class, 'deleteMessageById']);
+    Route::get('/get_message_by_id/{id}', [MessageController::class, 'getMessageById']);
 });
 
 Route::group(["middleware" => ["jwt.auth", "isSuperAdmin"]] , function() {
